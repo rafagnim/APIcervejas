@@ -6,6 +6,7 @@ import one.digitalinnovation.beerstock.dto.QuantityDTO;
 import one.digitalinnovation.beerstock.exception.BeerAlreadyRegisteredException;
 import one.digitalinnovation.beerstock.exception.BeerNotFoundException;
 import one.digitalinnovation.beerstock.exception.BeerStockExceededException;
+import one.digitalinnovation.beerstock.exception.BrandNotFoundException;
 import one.digitalinnovation.beerstock.service.BeerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -32,12 +33,23 @@ class BeerController implements BeerControllerDocs {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public BeerDTO createBeer(@RequestBody @Valid BeerDTO beerDTO) throws BeerAlreadyRegisteredException {
+        if(beerDTO.getMax() < beerDTO.getQuantity()) beerDTO.setMax(beerDTO.getQuantity());
         return beerService.createBeer(beerDTO);
     }
 
     @GetMapping("/{name}")
     public BeerDTO findByName(@PathVariable String name) throws BeerNotFoundException {
         return beerService.findByName(name);
+    }
+
+    @GetMapping("/{brand}/brands")
+    public BeerDTO findByBrand(@PathVariable String brand) throws BrandNotFoundException {
+        return beerService.findByBrand(brand);
+    }
+
+    @Override
+    public List<BeerDTO> listBrands() {
+        return beerService.listAll();
     }
 
     @GetMapping

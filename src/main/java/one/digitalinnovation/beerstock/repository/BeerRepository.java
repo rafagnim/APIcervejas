@@ -8,4 +8,6 @@ import java.util.Optional;
 public interface BeerRepository extends JpaRepository<Beer, Long> {
 
     Optional<Beer> findByName(String name);
+
+    Optional<Beer> findByBrand(String brand);
 }

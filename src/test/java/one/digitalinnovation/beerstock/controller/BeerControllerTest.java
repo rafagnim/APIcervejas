@@ -71,7 +71,9 @@ public class BeerControllerTest {
                 .andExpect(status().isCreated())
                 .andExpect(jsonPath("$.name", is(beerDTO.getName())))
                 .andExpect(jsonPath("$.brand", is(beerDTO.getBrand())))
-                .andExpect(jsonPath("$.type", is(beerDTO.getType().toString())));
+                .andExpect(jsonPath("$.type", is(beerDTO.getType().toString())))
+                //.andExpect(jsonPath("$.quantity") <= jsonPath("$.max"), is(true))
+        ;
     }
 
     @Test
