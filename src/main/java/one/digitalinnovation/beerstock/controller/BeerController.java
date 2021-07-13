@@ -43,7 +43,7 @@ class BeerController implements BeerControllerDocs {
     }
 
     @GetMapping("/{brand}/brands")
-    public BeerDTO findByBrand(@PathVariable String brand) throws BrandNotFoundException {
+    public List<BeerDTO> findByBrand(@PathVariable String brand) throws BrandNotFoundException {
         return beerService.findByBrand(brand);
     }
 

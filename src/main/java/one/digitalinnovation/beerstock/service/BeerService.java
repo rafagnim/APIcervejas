@@ -36,10 +36,15 @@ public class BeerService {
         return beerMapper.toDTO(foundBeer);
     }
 
-    public BeerDTO findByBrand(String brand) throws BrandNotFoundException {
-        Beer foundBeerBrand = beerRepository.findByBrand(brand)
-                .orElseThrow(() -> new BrandNotFoundException(brand));
-        return beerMapper.toDTO(foundBeerBrand);
+    public List<BeerDTO> findByBrand(String brand) throws BrandNotFoundException {
+        //Beer foundBeerBrand = beerRepository.findByBrand(brand)
+                //.orElseThrow(() -> new BrandNotFoundException(brand));
+        //return beerMapper.toDTO(foundBeerBrand);
+
+        return beerRepository.findByBrand(brand)
+                .stream()
+                .map(beerMapper::toDTO)
+                .collect(Collectors.toList());
     }
 
     public List<BeerDTO> listAll() {

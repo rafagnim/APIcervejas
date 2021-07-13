@@ -6,7 +6,8 @@ Este foi desenvolvido em aula proporcionada pela Digital Innovation One, atravé
 
 Em relação ao projeto desenvolvido em aula, fiz os seguintes acréscimos:
 
-* Baix
+* Incluído no controller, quando da criação do produto (beer), no caso de ser informada quantidade inicial maior que a quantidade máxima, uma instrução para igualar a quantidade máxima (estoque) a quantidade inicialmente informada;
+* Incluída a opção de busca por marca (retorna lista);
 
 Implementar: não deixar cadastrar inicialmente com estoque máximo inferior ao estoque inicial;
 
