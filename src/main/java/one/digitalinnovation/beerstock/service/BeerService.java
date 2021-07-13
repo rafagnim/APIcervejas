@@ -37,10 +37,6 @@ public class BeerService {
     }
 
     public List<BeerDTO> findByBrand(String brand) throws BrandNotFoundException {
-        //Beer foundBeerBrand = beerRepository.findByBrand(brand)
-                //.orElseThrow(() -> new BrandNotFoundException(brand));
-        //return beerMapper.toDTO(foundBeerBrand);
-
         return beerRepository.findByBrand(brand)
                 .stream()
                 .map(beerMapper::toDTO)
